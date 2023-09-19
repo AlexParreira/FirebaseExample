@@ -11,12 +11,18 @@ import SwiftUI
 final class SettingViewModel: ObservableObject{
     
     @Published var authProviders: [AuthProvideroption] = []
+    @Published var authUser: AuthDataResultModel? = nil
                                    
     func loadAuthProviders() {
         if let providers = try? AuthenticationManager.shared.getProviders(){
             authProviders = providers
         }
     }
+    
+    func loadAuthUser(){
+        self.authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+    }
+    
     
     func signOut() throws{
         try AuthenticationManager.shared.signOut()
@@ -43,6 +49,21 @@ final class SettingViewModel: ObservableObject{
         try await AuthenticationManager.shared.updatePassword(password: password)
     }
     
+    func linkGoogleAccount() async throws{
+        let helper = SignInGoogleHelper()
+        let token = try await helper.signIn()
+        let authDataResult = try await AuthenticationManager.shared.linkGoogle(tokens: token)
+        self.authUser = authDataResult
+    }
+    func linkAppleAccount() async throws{
+        //code
+    }
+    func linkEmailAccount() async throws{
+        let email = "teste123@gmail.com"
+        let password = "teste123"
+        let authDataResult = try await AuthenticationManager.shared.linkEmail(email: email, password: password)
+        self.authUser = authDataResult
+    }
 }
 
 struct SettingView: View {
@@ -65,10 +86,15 @@ struct SettingView: View {
             if viewModel.authProviders.contains(.email){
                 emailSection
             }
+   
+            if viewModel.authUser?.isAnonymous == true {
+                anonymousSection
+            }
             
         }
         .onAppear{
             viewModel.loadAuthProviders()
+            viewModel.loadAuthUser()
         }
         .navigationTitle("Settings")
     }
@@ -121,6 +147,45 @@ extension SettingView {
             }
         } header: {
             Text("Email functions")
+        }
+    }
+    
+    private var anonymousSection: some View {
+        Section{
+            Button("Link Google Account"){
+                Task{
+                    do {
+                        try await viewModel.linkGoogleAccount()
+                        print("Google Linked!")
+                    }catch{
+                        print(error)
+                    }
+                }
+            }
+            
+            Button("Link Apple Account"){
+                Task{
+                    do {
+                        try await viewModel.linkAppleAccount()
+                        print("Apple Linked!")
+                    }catch{
+                        print(error)
+                    }
+                }
+            }
+            
+            Button("Link Email"){
+                Task{
+                    do {
+                        try await viewModel.linkEmailAccount()
+                        print("Email Linked!")
+                    }catch{
+                        print(error)
+                    }
+                }
+            }
+        } header: {
+            Text("Link Account")
         }
     }
 }
