@@ -21,6 +21,9 @@ final class AuthenticationViewModel: ObservableObject{
     
     func signInAnonymous() async throws {
         let authDataResult = try await AuthenticationManager.shared.signInAnonymous()
-        try await UserManager.shared.createNewUser(auth: authDataResult)
+        
+        let user = DBUser(userId: authDataResult.uid, isAnonymous: authDataResult.isAnonymous, email: authDataResult.email, photoUrl: authDataResult.photoUrl, dateCreated: Date())
+        try await UserManager.shared.createNewUser(user: user)
+        //try await UserManager.shared.createNewUser(auth: authDataResult)
     }
 }
