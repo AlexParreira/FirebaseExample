@@ -31,6 +31,10 @@
 		EBC7F52F2AB7321500959F40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBC7F52E2AB7321500959F40 /* GoogleService-Info.plist */; };
 		EBC7F5322AB7350300959F40 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC7F5312AB7350300959F40 /* Utilities.swift */; };
 		EBC7F5342AB75AED00959F40 /* SingInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC7F5332AB75AED00959F40 /* SingInGoogleHelper.swift */; };
+		EBEC2A9D2ABC8A380089BD07 /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC2A9C2ABC8A380089BD07 /* ProductsDatabase.swift */; };
+		EBEC2AA02ABC9CD20089BD07 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC2A9F2ABC9CD20089BD07 /* ProductsView.swift */; };
+		EBEC2AA22ABCA9010089BD07 /* ProductsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC2AA12ABCA9010089BD07 /* ProductsManager.swift */; };
+		EBEC2AA62ABCB6140089BD07 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC2AA52ABCB6140089BD07 /* ProductCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		EBC7F52E2AB7321500959F40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EBC7F5312AB7350300959F40 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EBC7F5332AB75AED00959F40 /* SingInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInGoogleHelper.swift; sourceTree = "<group>"; };
+		EBEC2A9C2ABC8A380089BD07 /* ProductsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
+		EBEC2A9F2ABC9CD20089BD07 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		EBEC2AA12ABCA9010089BD07 /* ProductsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsManager.swift; sourceTree = "<group>"; };
+		EBEC2AA52ABCB6140089BD07 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +179,7 @@
 		EB96E1F32ABA581100D81C70 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EBEC2A9E2ABC9AE90089BD07 /* Products */,
 				EB1275022AB674C4007EA01D /* RootView.swift */,
 				EB96E1F82ABA589D00D81C70 /* Autehentication */,
 				EB96E1FE2ABA613200D81C70 /* Profile */,
@@ -219,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				EB96E2022ABA6FED00D81C70 /* UserManager.swift */,
+				EBEC2AA12ABCA9010089BD07 /* ProductsManager.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -227,8 +237,26 @@
 			isa = PBXGroup;
 			children = (
 				EBC7F5312AB7350300959F40 /* Utilities.swift */,
+				EBEC2A9C2ABC8A380089BD07 /* ProductsDatabase.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EBEC2A9E2ABC9AE90089BD07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBEC2AA42ABCB5F60089BD07 /* SubView */,
+				EBEC2A9F2ABC9CD20089BD07 /* ProductsView.swift */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		EBEC2AA42ABCB5F60089BD07 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				EBEC2AA52ABCB6140089BD07 /* ProductCellView.swift */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBEC2AA22ABCA9010089BD07 /* ProductsManager.swift in Sources */,
 				EBC7F5342AB75AED00959F40 /* SingInGoogleHelper.swift in Sources */,
 				EB96E2002ABA615300D81C70 /* ProfileView.swift in Sources */,
 				EB96E2032ABA6FED00D81C70 /* UserManager.swift in Sources */,
@@ -387,7 +416,10 @@
 				EB96E1F72ABA589700D81C70 /* SettingsViewModel.swift in Sources */,
 				EB1274C82AB61986007EA01D /* FirebaseExampleApp.swift in Sources */,
 				EB1275012AB6401C007EA01D /* AuthenticationManager.swift in Sources */,
+				EBEC2AA62ABCB6140089BD07 /* ProductCellView.swift in Sources */,
+				EBEC2AA02ABC9CD20089BD07 /* ProductsView.swift in Sources */,
 				EBC7F5322AB7350300959F40 /* Utilities.swift in Sources */,
+				EBEC2A9D2ABC8A380089BD07 /* ProductsDatabase.swift in Sources */,
 				EB1274FD2AB63CE1007EA01D /* AuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
